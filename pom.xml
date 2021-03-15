@@ -9,15 +9,17 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	
+
 	<groupId>com.ibm</groupId>
 	<artifactId>order</artifactId>
-	<version>0.5.2-DOCKERReady</version>
+	<version>0.5.3-K8sReady</version>
 	<name>order</name>
 	<description>Order</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.compiler.target>8</maven.compiler.target>
+		<maven.compiler.source>8</maven.compiler.source>
 	</properties>
 
 	<dependencies>
@@ -56,12 +58,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<!-- exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions -->
+			<!-- exclusions> <exclusion> <groupId>org.junit.vintage</groupId> <artifactId>junit-vintage-engine</artifactId> 
+				</exclusion> </exclusions -->
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
