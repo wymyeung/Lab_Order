@@ -23,38 +23,49 @@ import org.slf4j.LoggerFactory;
 @RestController
 @RequestMapping(value = "/order")
 public class OrderController {
-	
+
 	@Autowired
 	private OrderService orderService;
-	
+
 	private final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
 	// URL: http://ip-address:port/order/order (POST request)
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	public ResponseEntity<?> addOrder(@RequestBody OrderInput orderInput) {
-		System.out.println("DEBUG - add Order = "+orderInput);
+
+		logger.info("Entered OrderController.addOrder(). New Order = {}", orderInput);
+
 		Order order = this.orderService.addOrder(orderInput);
+		logger.debug("OrderController.addOrder().  Added order = {}", order);
+
 		ResponseEntity<Order> responseEntity = new ResponseEntity<Order>(order, HttpStatus.OK);
+
 		return responseEntity;
 	}
 
 	// URL: http://ip-address:port/order/order/O123 (GET request)
 	@RequestMapping(value = "/order/{orderNumber}")
-	public ResponseEntity<?> getOrder(@PathVariable(value="orderNumber") String orderNumber) {
+	public ResponseEntity<?> getOrder(@PathVariable(value = "orderNumber") String orderNumber) {
 
-		logger.info("Entered OrderController.getOrder().  orderNumber=" + orderNumber);
+		logger.info("Entered OrderController.getOrder().  orderNumber = {}", orderNumber);
+		
 		Order order = this.orderService.getOrder(orderNumber);
-		logger.debug("OrderController.getOrder().  order=" + order);
+		logger.debug("OrderController.getOrder().  order = {}", order);
+
 		ResponseEntity<Order> responseEntity = new ResponseEntity<Order>(order, HttpStatus.OK);
+
 		return responseEntity;
-   }
-   
-   // URL: http://ip-address:port/order/orders (GET request)
-   @RequestMapping(value = "/orders")
-   public ResponseEntity<?> getOrders() {
-	   
-	   List<Order> orders = this.orderService.getOrders();
-	   ResponseEntity<List<Order>> responseEntity = new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
-	   return responseEntity;
-   }
+	}
+
+	// URL: http://ip-address:port/order/orders (GET request)
+	@RequestMapping(value = "/orders")
+	public ResponseEntity<?> getOrders() {
+
+		List<Order> orders = this.orderService.getOrders();
+		logger.debug("OrderController.getOrders().  orders = {}", orders);
+
+		ResponseEntity<List<Order>> responseEntity = new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
+
+		return responseEntity;
+	}
 }

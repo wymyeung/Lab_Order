@@ -24,8 +24,9 @@ public class Order {
 		super();
 	}
 	
-	public Order(String customerNumber, List<OrderMenuItem> orderMenuItems, double orderPrice) {
+	public Order(String orderNumber, String customerNumber, List<OrderMenuItem> orderMenuItems, double orderPrice) {
 		super();
+		this.orderNumber = orderNumber;
 		this.customerNumber = customerNumber;
 		this.orderMenuItems = orderMenuItems;
 		this.orderPrice = orderPrice;
