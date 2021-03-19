@@ -7,16 +7,10 @@ Scenario Outline: Get an existing Order from the Restaurant
    Given The Order service is running and Order db has OrderNumber, ORDER789, in it
    When The Order Microservice receives a request for OrderNumber, ORDER789
    Then The Order microservice should return order information for OrderNumber, ORDER789
-   
-Scenario Outline: Get an existing Order from the Restaurant
+
    Given The Order service is running and Order db has OrderNumber, ORDER689, in it
    When The Order Microservice receives a request for OrderNumber, ORDER689
    Then The Order microservice should return order information for OrderNumber, ORDER689
-
-  Examples:
-    | ORDER789  |
-    | ORDER689      | 
-    | ORDER777        |
 
 Scenario: Try to get an Order that does not exist in the Restaurant
    Given Order service is running and Order db does not have OrderNumber, ORDER1874, in it

@@ -74,6 +74,16 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>io.opentracing.contrib</groupId>
+			<artifactId>opentracing-spring-jaeger-web-starter</artifactId>
+			<version>2.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-surefire-provider</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 
 	</dependencies>
 

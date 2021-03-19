@@ -29,7 +29,7 @@ import static org.mockito.Mockito.verify;
 
 class OrderServiceImplTest {
 
-	@Mock 
+	@Mock
     private OrderRepo orderRepo;
 	
 	@Mock
@@ -48,10 +48,9 @@ class OrderServiceImplTest {
     void testGetOrder() {
         // Given - set the parameter values and mock the methods for this test case
         String orderID = "1988";
-
         List<OrderMenuItem> emptyMenu = new ArrayList<OrderMenuItem>();
-        
         Order testOrder = new Order(orderID, "testCustomer", emptyMenu, 19.88);
+        
         when(orderService.getOrder(orderID)).thenReturn(testOrder);
      
         // When - call the method being tested and save the response
@@ -68,9 +67,9 @@ class OrderServiceImplTest {
     @Test
     void testGetMenuItem() {
         // Given - set the parameter values and mock the methods for this test case
-        String menuID = "MENU301";
-     
+        String menuID = "MENU301";     
         MenuItem testMenu = new MenuItem(menuID, "testMenu","testMenuDesc","testMenuCategory",999, 19.88);
+        
         when(menuEndpoint.getMenuItem(menuID)).thenReturn(testMenu);
      
         // When - call the method being tested and save the response

@@ -4,12 +4,13 @@ import java.util.Collection;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.ibm.order.model.MenuItem;
-import com.ibm.order.rest.OrderController;
+//import com.ibm.order.rest.OrderController;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
@@ -17,8 +18,12 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 @Component
 public class MenuEndpointImpl implements MenuEndpoint {
 
-	private RestTemplate restTemplate = new RestTemplate();
-	private final Logger logger = LoggerFactory.getLogger(OrderController.class);
+	// private RestTemplate restTemplate = new RestTemplate();
+	
+	@Autowired
+	RestTemplate restTemplate;
+	
+	private final Logger logger = LoggerFactory.getLogger(MenuEndpointImpl.class);
 
 	@Value("${menuServiceEndpoint.endpoint}")
 	private String menuServiceEndpoint; //menuServiceEndpoint.endpoint=localhost:9742
@@ -30,7 +35,7 @@ public class MenuEndpointImpl implements MenuEndpoint {
 			@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),
 			@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "75") })
 	public MenuItem getMenuItem(String menuItemNumber) {
-		
+		//trace 1
 		MenuItem menuItem = null;
 
 		String menuServiceEndpointURL = "http://" + menuServiceEndpoint + "/menu/menu/" + menuItemNumber;

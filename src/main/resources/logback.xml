@@ -18,7 +18,26 @@
 		</encoder>
 	</appender>
 
+
 	<logger name="com.ibm.order" level="DEBUG" />
+
+	<logger name="com.ibm.order.endpoint.MenuEndpointImpl"
+		level="WARN">
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="FILE" />
+	</logger>
+
+	<logger name="com.ibm.order.rest.OrderController" level="WARN">
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="FILE" />
+	</logger>
+
+	<logger name="com.ibm.order.service.OrderServiceImpl"
+		level="WARN">
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="FILE" />
+	</logger>
+
 
 	<root level="INFO">
 		<appender-ref ref="consoleAppender" />
